@@ -31,4 +31,16 @@ class OrderController extends Controller
 
         return back();
     }
+
+    public function edit($id){
+        $order = Order::findOrFail($id);
+        return view('admin.orders.edit', compact('order'));
+    }
+
+    public function update(Request $request, $id){
+        $order = Order::findOrFail($id);
+        $order->status = $request->get('order_status');
+        $order->save();
+        return redirect(Route('admin.orders.index'));
+    }
 }

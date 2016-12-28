@@ -30,6 +30,8 @@ Route::group(['middleware' => 'web'], function () use ($admin) {
 
         Route::get('orders', ['as' => 'admin.orders.index', 'uses' => 'OrderController@index']);
         Route::delete('orders/{id}', ['as' => 'admin.orders.destroy', 'uses' => 'OrderController@destroy']);
+        Route::patch('oders/{id}', ['as' => 'admin.orders.update', 'uses' => 'OrderController@update']);
+        Route::get('orders/{id}/edit', ['as'=>'admin.orders.edit', 'uses'=>'OrderController@edit']);
 
         Route::get('setting', ['as' => 'admin.setting', 'uses' => 'SettingController@index']);
         Route::post('setting', ['as' => 'admin.setting.update', 'uses' => 'SettingController@update']);
